@@ -1,0 +1,26 @@
+# Tracker files (personal job application data)
+*TRACKER*
+*tracker*.txt
+*tracker*.json
+
+# CV database (personal)
+CV_REPOSITORY_DATABASE.md
+
+# Config files
+config.yaml
+.env
+.env.local
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Backups
+*.bak
+*.bak.*
