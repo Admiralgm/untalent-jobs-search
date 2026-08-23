@@ -3,14 +3,14 @@ name: untalent-jobs-search
 description: >-
   Scan UNTalent.org, UNJobNet.org, and Impactpool.org for ICT/AI/digital/innovation
   vacancies using Scrapling StealthyFetcher (async concurrent extraction). Extract full job
-  descriptions, score with vacancy-compatibility-scoring-engine, and update
+  descriptions, score with vaccancy-compatibility-scoring-engine, and update
   UN_SECTOR_VACCANCIES_IMPACTPOOL.txt. Includes all three sites with aggressive
   keyword pre-filtering. Phase 0 removes expired JDs before each scan.
 version: 4.1.0
 author: Hermes Agent
 tags: [un-jobs, aggregators, untalent, unjobnet, impactpool, scoring, scrapling]
 related_skills:
-  - vacancy-compatibility-scoring-engine
+  - vaccancy-compatibility-scoring-engine
   - tracker-file-format
   - scrapling
 ---
@@ -124,7 +124,7 @@ This ensures the daily scan always starts with a clean, current dataset.
 - File: `IP_{jid}_{sanitized_title}.md`
 
 ### Phase B — Scoring (from disk, after Phase A completes)
-1. Load `vacancy-compatibility-scoring-engine` + CV database
+1. Load `vaccancy-compatibility-scoring-engine` + CV database
 2. Score ALL JD files from all 3 folders with 7-parameter engine + arithmetic check
 3. Penalties: GIS -15, SWE -20, Data Eng IC -10, BI -10
 4. Always use FULL portal description, NEVER tracker titles
@@ -147,7 +147,7 @@ This ensures the daily scan always starts with a clean, current dataset.
 **IMPORTANT for multi-profile use:** The script hardcodes the output path as
 `Path("~/Downloads/DATA_REPOSITORY/JOBS-RAW-EXTRACT")`.
 This is intentional — `Path.home()` resolves to the Hermes profile home
-(e.g., `config/profiles/agent/home/`), NOT `~`.
+(e.g., `config/home/`), NOT `~`.
 The script works identically from all profiles.
 
 **RAW JD STORAGE:** All raw JD extracts from web portals are stored in
@@ -277,7 +277,7 @@ Use `StealthyFetcher.async_fetch(url, ...)` — a class method coroutine. Do NOT
 
 ### Cross-Profile Write Guard
 
-`write_file` blocks writes to `skills/` from agent sessions (symlink resolves to default profile). Workaround: use `terminal` with heredoc.
+`write_file` blocks writes to `skills/` from AGENT sessions (symlink resolves to default profile). Workaround: use `terminal` with heredoc.
 
 ## Camoufox Crash Pattern
 
@@ -288,7 +288,7 @@ For sites that crash Scrapling (WHO Taleo, heavy JS SPAs):
 
 See: `references/scrapling-stealthy-fetcher.md` for full API reference and per-platform link patterns.
 - The skill lives in the **default** profile: `skills/research/untalent-jobs-search/`
-- When running as agent/2/3, `write_file` tool BLOCKS writes to `skills/` (cross-profile guard)
+- When running as AGENT/2/3, `write_file` tool BLOCKS writes to `skills/` (cross-profile guard)
 - **Workaround**: Use `terminal` with `cat > file << 'EOF'` heredoc to write/update the script and SKILL.md
 - The script itself hardcodes `Path("~/Downloads/DATA_REPOSITORY/JOBS-RAW-EXTRACT")` so it works from any profile
 

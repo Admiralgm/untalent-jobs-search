@@ -26,5 +26,5 @@
 - Async: await StealthyFetcher.async_fetch(url, headless=True, disable_resources=True, wait=2000)
 - Response: use .status, .get_all_text(), .html_content -- NOT .text (may be None)
 - Title: page.css('h1::text').get()
-- Playwright Chromium: config/profiles/agent/home/Library/Caches/ms-playwright/chromium-1208/
+- Playwright Chromium: config/home/Library/Caches/ms-playwright/chromium-1208/
 - Install: python3 -m playwright install chromium

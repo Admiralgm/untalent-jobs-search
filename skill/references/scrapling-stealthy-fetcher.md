@@ -50,4 +50,4 @@ links = re.findall(r'href="(/en-us/job/(\d+)/[^"]*)"', html)
 ```
 
 ## Cross-Profile Write Guard
-`write_file` blocks writes to `skills/` from agent. Use terminal heredoc as workaround.
+`write_file` blocks writes to `skills/` from AGENT. Use terminal heredoc as workaround.
